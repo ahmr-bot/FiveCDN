@@ -1,0 +1,19 @@
+# 配置代理服务器的地址和端口
+[server]
+host = "localhost"
+port = 8080
+
+# 配置需要代理的域名和对应的路径
+[[proxy]]
+domain = "mecdn.mcserverx.com"
+path = "/a"
+[[proxy]]
+domain = "www.mefrp.com"
+path = "/b"
+
+# 配置客户端缓存时间（单位：秒）
+cache_time = 3600
+# 配置白名单 url
+whitelist_url = "https://mecdn.mcserverx.com/gh/ahmr-bot/MECDN-WhiteList/master/whitelist.txt"
+server = "MECDN"
+mode = "release"
