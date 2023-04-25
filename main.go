@@ -83,7 +83,7 @@ func main() {
 	// 创建白名单对象
 	whiteList := NewWhiteList()
 	// 加载初始白名单
-	err := whiteList.LoadFromFile("https://mecdn.mcserverx.com/gh/ahmr-bot/MECDN-WhiteList/master/list.txt")
+	err := whiteList.LoadFromFile("https://raw.cdn.mcserverx.top/ahmr-bot/MECDN-WhiteList/master/list.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -92,7 +92,7 @@ func main() {
 	go func() {
 		for {
 			time.Sleep(5 * time.Minute)
-			err := whiteList.LoadFromFile("https://mecdn.mcserverx.com/gh/ahmr-bot/MECDN-WhiteList/master/list.txt")
+			err := whiteList.LoadFromFile("https://raw.cdn.mcserverx.top/ahmr-bot/MECDN-WhiteList/master/list.txt")
 			if err != nil {
 				fmt.Println("Failed to update whitelist:", err)
 			}
