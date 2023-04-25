@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5df52b7-038c-4ce1-abfe-ad09b60f90b3" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/MECDN.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+    <list default="true" id="c5df52b7-038c-4ce1-abfe-ad09b60f90b3" name="Changes" comment="添加 自动/人工白名单程序 缓存刷新程序">
+      <change afterPath="$PROJECT_DIR$/.gitigore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Refresh_URL/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/header.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/maincopy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/whitelist.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go Application" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -34,13 +37,17 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OoBTfrIeOR7SDvLiNjSRi1x0II" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go Application&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -48,12 +55,15 @@
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/admin/GolandProjects/MECDN&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\admin\GolandProjects\MECDN" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Users\admin\GolandProjects\MECDN\pkg" />
     </key>
@@ -100,8 +110,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit" />
+    <MESSAGE value="添加 自动/人工白名单程序 缓存刷新程序" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加 自动/人工白名单程序 缓存刷新程序" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

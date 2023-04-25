@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>审核状态</title>
+  </head>
+  <body>
+    <h1>审核状态</h1>
+    <p>该列表每五分钟向生产服务更新一次</p>
+        <p>审核中</p>
+    <ul id="list1"></ul>
+    <script>
+      function renderList(data) {
+        const list = document.getElementById('list1');
+        data.urls.forEach(url => {
+          const link = document.createElement('a');
+          link.href = url;
+          link.textContent = url;
+          const li = document.createElement('li');
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+      }
+
+      fetch('http://127.0.0.1:5000/api/v1/audit')
+        .then(response => response.json())
+        .then(data => {
+          renderList(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    </script>
+          <p>已通过</p>
+        <ul id="list2"></ul>
+  <script>
+        function renderersList(data) {
+        const list = document.getElementById('list2');
+        data.urls.forEach(url => {
+          const link = document.createElement('a');
+          link.href = url;
+          link.textContent = url;
+          const li = document.createElement('li');
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+      }
+    fetch('http://127.0.0.1:5000/api/v1/pass')
+        .then(response => response.json())
+        .then(pass => {
+          renderersList(pass);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  </script>
+  </body>
+</html>
