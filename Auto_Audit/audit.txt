@@ -1,2 +1,0 @@
-/gh/ahmr-bot/Mirrors/*
-/gh/ahmr-bot/abc/*

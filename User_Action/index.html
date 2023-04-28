@@ -88,6 +88,17 @@
             <button type="submit">提交</button>
         </form>
     </div>
+    <div class="container">
+        <h1>刷新CDN缓存</h1>
+        <form id="cdn_cache" method="post" action="/refresh">
+            <label for="url">URL:</label><br>
+            <textarea id="url" name="url"></textarea><br>
+            <input type="checkbox" id="is_dir" name="is_dir" value="yes">
+            <label for="is_dir">刷新目录</label><br>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+
 
     <script>
         const form = document.getElementById('url-form');

@@ -1,0 +1,3 @@
+/gh/ahmr-bot/Mirrors/*
+/gh/ahmr-bot/abc/*/npm/111*
+/npm/1221*
