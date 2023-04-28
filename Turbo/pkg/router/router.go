@@ -1,4 +1,4 @@
-package main
+package router
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func registerRoutes(r *gin.Engine) {
+func RegisterRoutes(r *gin.Engine) {
 	// 遍历所有代理
 	for _, p := range viper.Get("proxy").([]interface{}) {
 		proxy := p.(map[string]interface{})

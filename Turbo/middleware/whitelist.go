@@ -1,4 +1,4 @@
-package main
+package middleware
 
 import (
 	"fmt"
@@ -77,7 +77,7 @@ func (wl *WhiteList) UpdatePeriodically(url string, interval time.Duration) {
 	}
 }
 
-func whiteListMiddleware(whiteList *WhiteList) gin.HandlerFunc {
+func WhiteListMiddleware(whiteList *WhiteList) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if whiteList.Contains(c.Request.URL.Path) {
 			c.Next()

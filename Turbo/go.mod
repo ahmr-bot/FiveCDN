@@ -1,4 +1,4 @@
-module github.com/ahmr-bot/MECDN
+module github.com/ahmr-bot/MECDN/Turbo
 
 go 1.19
 

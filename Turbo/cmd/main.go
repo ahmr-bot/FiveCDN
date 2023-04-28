@@ -1,17 +1,28 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"github.com/ahmr-bot/MECDN/Turbo/middleware"
+	"github.com/ahmr-bot/MECDN/Turbo/pkg"
+	"github.com/ahmr-bot/MECDN/Turbo/pkg/config"
+	"github.com/ahmr-bot/MECDN/Turbo/pkg/router"
 	"github.com/gin-gonic/gin"
-	"github.com/spf13/viper"
 )
 
+var (
+	ConfigPath string
+)
+
+func init() {
+	flag.StringVar(&ConfigPath, "c", "", "配置文件路径")
+	flag.Parse()
+}
 func main() {
 	// 初始化配置
-	config := NewConfig("config.toml")
-
+	config := config.NewConfig(ConfigPath)
 	// 创建白名单对象并加载初始白名单
-	whiteList := NewWhiteList()
+	whiteList := middleware.NewWhiteList()
 	if err := whiteList.LoadFromFile(config.WhiteListURL); err != nil {
 		panic(err)
 	}
@@ -19,24 +30,20 @@ func main() {
 	// 定时更新白名单
 	go whiteList.UpdatePeriodically(config.WhiteListURL, config.WhiteListUpdateInterval)
 
+	// 设置gin模式
+	pkg.SetMode()
+
 	// 创建 Gin 引擎
 	engine := gin.Default()
 
-	// 模式切换
-	if viper.GetBool("debug.gin_mode") {
-		gin.SetMode(gin.DebugMode)
-	} else {
-		gin.SetMode(gin.ReleaseMode)
-	}
-
 	// 添加自定义响应头
-	engine.Use(serverHeaderMiddleware(config.ServerName))
+	engine.Use(middleware.ServerHeaderMiddleware(config.ServerName))
 
 	// 添加白名单验证中间件
-	engine.Use(whiteListMiddleware(whiteList))
+	engine.Use(middleware.WhiteListMiddleware(whiteList))
 
 	// 注册路由
-	registerRoutes(engine)
+	router.RegisterRoutes(engine)
 
 	// 启动服务器
 	addr := fmt.Sprintf("%s:%d", config.Host, config.Port)

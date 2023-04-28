@@ -1,11 +1,11 @@
 [server]
 host = "localhost"
 port = 8080
-name = "mecdn"
+name = "Five CDN Turbo V1.0"
 
 [whitelist]
 url = "https://mecdn.mcserverx.com/gh/ahmr-bot/MECDN-WhiteList/master/list.txt"
-update_interval = "5m"
+update_interval = "1s"
 
 # 配置需要代理的域名和对应的路径
 [[proxy]]
@@ -16,4 +16,4 @@ domain = "b.com"
 path = "/b/article"
 
 [debug]
-gin_mode = "release"
+debug= false
