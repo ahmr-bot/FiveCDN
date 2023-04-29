@@ -1,11 +1,13 @@
 [server]
 host = "localhost"
 port = 8080
-name = "Five CDN Turbo V1.0"
+name = "广东移动"
+powered_by = "Five CDN Turbo V1.0"
 
 [whitelist]
+enabled = true
 url = "https://mecdn.mcserverx.com/gh/ahmr-bot/MECDN-WhiteList/master/list.txt"
-update_interval = "1s"
+update_interval = "5m"
 
 # 配置需要代理的域名和对应的路径
 [[proxy]]

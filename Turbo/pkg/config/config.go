@@ -10,6 +10,7 @@ type Config struct {
 	Host                    string
 	Port                    int
 	ServerName              string
+	PoweredBy               string
 	WhiteListURL            string
 	WhiteListUpdateInterval time.Duration
 }
@@ -24,6 +25,7 @@ func NewConfig(configFile string) *Config {
 		Host:                    viper.GetString("server.host"),
 		Port:                    viper.GetInt("server.port"),
 		ServerName:              viper.GetString("server.name"),
+		PoweredBy:               viper.GetString("server.powered_by"),
 		WhiteListURL:            viper.GetString("whitelist.url"),
 		WhiteListUpdateInterval: viper.GetDuration("whitelist.update_interval"),
 	}

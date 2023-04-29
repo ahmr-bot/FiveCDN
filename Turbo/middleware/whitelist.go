@@ -77,12 +77,20 @@ func (wl *WhiteList) UpdatePeriodically(url string, interval time.Duration) {
 	}
 }
 
-func WhiteListMiddleware(whiteList *WhiteList) gin.HandlerFunc {
+func WhiteListMiddleware(whiteList *WhiteList, ServerName string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if whiteList.Contains(c.Request.URL.Path) {
 			c.Next()
 			return
 		}
-		c.AbortWithStatus(http.StatusForbidden)
+		// c.AbortWithStatus(http.StatusForbidden)
+		// 在 403页面  给用户返回 The URL is not in the whitelist
+		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{
+			"ip":         c.ClientIP(),
+			"message":    "The URL you requested is not in the whitelist",
+			"status":     http.StatusForbidden,
+			"powered_by": ServerName,
+		})
+
 	}
 }
