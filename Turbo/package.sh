@@ -31,7 +31,7 @@ for OS in ${OS_ALL}; do
         cp ./config.toml ${PKG_DIR}/
 
         # 创建 tar 包
-        tar -czf ${TAR_FILE} -C ${BUILD_DIR} ${PROJECT}-${VERSION}
+        tar -czf ${BUILD_DIR}/${PROJECT}-${OS}-${ARCH}-${VERSION}.tar.gz -C ${BUILD_DIR} ${PROJECT}-${VERSION}
 
         # 清理打包目录
         rm -rf ${PKG_DIR}
