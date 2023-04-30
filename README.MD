@@ -39,6 +39,15 @@ path = "/a"
 domain = "b.com"
 path = "/b/article"
 
+[cors]
+allow_all_origins = true
+# 此项为 true 时，下方无效
+allow_origins = ["http://localhost:8080", "http://example.com"]
+allow_methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+allow_headers = ["Content-Type", "Authorization"]
+allow_credentials = false
+expose_headers = []
+
 [debug]
 debug= false
 # 调试模式
