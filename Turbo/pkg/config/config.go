@@ -32,4 +32,5 @@ func NewConfig(configFile string) *Config {
 		WhiteListURL:            viper.GetString("whitelist.url"),
 		WhiteListUpdateInterval: viper.GetDuration("whitelist.update_interval"),
 	}
+
 }

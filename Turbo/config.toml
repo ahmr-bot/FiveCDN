@@ -1,6 +1,6 @@
 [server]
 host = "localhost"
-port = 8080
+port = 8081
 name = "广东移动"
 powered_by = "Five CDN Turbo V1.0"
 
@@ -16,6 +16,15 @@ path = "/a"
 [[proxy]]
 domain = "b.com"
 path = "/b/article"
+
+[cors]
+allow_all_origins = true
+# 此项为 true 时，下方无效
+allow_origins = ["http://localhost:8080", "http://example.com"]
+allow_methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+allow_headers = ["Content-Type", "Authorization"]
+allow_credentials = false
+expose_headers = []
 
 [debug]
 debug= false

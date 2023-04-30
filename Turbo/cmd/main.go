@@ -3,13 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+
 	"github.com/ahmr-bot/MECDN/Turbo/middleware"
 	"github.com/ahmr-bot/MECDN/Turbo/pkg"
 	"github.com/ahmr-bot/MECDN/Turbo/pkg/config"
 	"github.com/ahmr-bot/MECDN/Turbo/pkg/router"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	"log"
 )
 
 var (
@@ -32,6 +33,14 @@ func main() {
 
 	// 添加自定义响应头
 	engine.Use(middleware.ServerHeaderMiddleware(Config.PoweredBy))
+
+	// 添加CORS中间件
+
+	// 添加CORS跨域访问处理中间件
+	engine.Use(middleware.CORSMiddleware())
+
+	// 添加gzip
+	engine.Use(middleware.Gzip())
 
 	// 添加白名单验证中间件
 	if viper.GetBool("whitelist.enabled") == true {
