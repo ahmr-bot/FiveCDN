@@ -16,6 +16,9 @@ type Config struct {
 }
 
 func NewConfig(configFile string) *Config {
+	if configFile == "" {
+		configFile = "config.toml"
+	}
 	viper.SetConfigFile(configFile)
 	if err := viper.ReadInConfig(); err != nil {
 		panic(err)
