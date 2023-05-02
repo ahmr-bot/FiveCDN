@@ -34,7 +34,12 @@ func RegisterRoutes(r *gin.Engine) {
 				c.AbortWithError(http.StatusBadGateway, err)
 				return
 			}
-			defer resp.Body.Close()
+			defer func(Body io.ReadCloser) {
+				err := Body.Close()
+				if err != nil {
+					// handle the error
+				}
+			}(resp.Body)
 
 			// 读取响应内容
 			body, err := io.ReadAll(resp.Body)
@@ -45,7 +50,7 @@ func RegisterRoutes(r *gin.Engine) {
 
 			// 返回响应内容
 			c.Header("Cache-Control", fmt.Sprintf("max-age=%d", viper.GetInt("cache_time")))
-			c.Data(http.StatusOK, "", body)
+			c.Data(http.StatusOK, "text/plain; charset=utf-8", body)
 		})
 	}
 }
