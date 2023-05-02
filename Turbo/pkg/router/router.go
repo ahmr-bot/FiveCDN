@@ -41,6 +41,9 @@ func RegisterRoutes(r *gin.Engine) {
 				}
 			}(resp.Body)
 
+			// 获取content-type
+			contentType := resp.Header.Get("Content-Type")
+
 			// 读取响应内容
 			body, err := io.ReadAll(resp.Body)
 			if err != nil {
@@ -50,7 +53,7 @@ func RegisterRoutes(r *gin.Engine) {
 
 			// 返回响应内容
 			c.Header("Cache-Control", fmt.Sprintf("max-age=%d", viper.GetInt("cache_time")))
-			c.Data(http.StatusOK, "text/plain; charset=utf-8", body)
+			c.Data(http.StatusOK, contentType, body)
 		})
 	}
 }
