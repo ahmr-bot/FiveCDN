@@ -5,7 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"io"
+	"mime"
 	"net/http"
+	"path/filepath"
 	"strings"
 )
 
@@ -41,8 +43,9 @@ func RegisterRoutes(r *gin.Engine) {
 				}
 			}(resp.Body)
 
-			// 获取content-type
-			contentType := resp.Header.Get("Content-Type")
+			// 获取Content-Type
+			ext := filepath.Ext(resp.Request.URL.Path)
+			contentType := mime.TypeByExtension(ext)
 
 			// 读取响应内容
 			body, err := io.ReadAll(resp.Body)
