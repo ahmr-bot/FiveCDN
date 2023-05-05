@@ -55,8 +55,8 @@ func (wl *WhiteList) Contains(path string) bool {
 	wl.RLock()
 	defer wl.RUnlock()
 	for k := range wl.list {
-		if strings.HasSuffix(k, "/*") {
-			prefix := strings.TrimSuffix(k, "/*")
+		if strings.HasSuffix(k, "*") {
+			prefix := strings.TrimSuffix(k, "*")
 			if strings.HasPrefix(path, prefix) {
 				return true
 			}
