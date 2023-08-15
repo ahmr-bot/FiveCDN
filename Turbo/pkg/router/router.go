@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func RegisterRoutes(r *gin.Engine) {
+func RegisterRoutes(r *gin.Engine, ServerName string) {
 	// 遍历所有代理
 	for _, p := range viper.Get("proxy").([]interface{}) {
 		proxy := p.(map[string]interface{})
@@ -33,7 +33,8 @@ func RegisterRoutes(r *gin.Engine) {
 			// 发送代理请求
 			resp, err := http.Get(proxyURL)
 			if err != nil {
-				c.AbortWithError(http.StatusBadGateway, err)
+				// 返回 502 错误 (Bad Gateway)
+				_ = c.AbortWithError(http.StatusBadGateway, err)
 				return
 			}
 			defer func(Body io.ReadCloser) {
@@ -50,7 +51,7 @@ func RegisterRoutes(r *gin.Engine) {
 			// 读取响应内容
 			body, err := io.ReadAll(resp.Body)
 			if err != nil {
-				c.AbortWithError(http.StatusInternalServerError, err)
+				_ = c.AbortWithError(http.StatusInternalServerError, err)
 				return
 			}
 
@@ -59,4 +60,13 @@ func RegisterRoutes(r *gin.Engine) {
 			c.Data(http.StatusOK, contentType, body)
 		})
 	}
+	// 处理空路由
+	r.NoRoute(func(c *gin.Context) {
+		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{
+			"ip":         c.ClientIP(),
+			"message":    "The URL you requested is not found on this server.",
+			"status":     http.StatusForbidden,
+			"powered_by": ServerName,
+		})
+	})
 }

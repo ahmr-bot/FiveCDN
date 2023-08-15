@@ -60,7 +60,7 @@ func main() {
 	}
 
 	// 注册路由
-	router.RegisterRoutes(engine)
+	router.RegisterRoutes(engine, Config.ServerName)
 
 	// 启动服务器
 	addr := fmt.Sprintf("%s:%d", Config.Host, Config.Port)
