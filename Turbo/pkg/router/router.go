@@ -62,10 +62,10 @@ func RegisterRoutes(r *gin.Engine, ServerName string) {
 	}
 	// 处理空路由
 	r.NoRoute(func(c *gin.Context) {
-		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{
+		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{
 			"ip":         c.ClientIP(),
 			"message":    "The URL you requested is not found on this server.",
-			"status":     http.StatusForbidden,
+			"status":     http.StatusNotFound,
 			"powered_by": ServerName,
 		})
 	})
