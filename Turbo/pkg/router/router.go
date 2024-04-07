@@ -60,7 +60,9 @@ func RegisterRoutes(r *gin.Engine, ServerName string) {
 			c.Data(http.StatusOK, contentType, body)
 		})
 	}
-	// 处理空路由
+	// 处理static目录下的所有文件
+	r.StaticFS("/static", http.Dir("static"))
+	//处理空路由
 	r.NoRoute(func(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{
 			"ip":         c.ClientIP(),
